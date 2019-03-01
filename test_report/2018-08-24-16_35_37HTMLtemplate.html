@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>放牛娃项目测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>放牛娃项目测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-08-24 16:35:37</p>
+<p class='attribute'><strong>Duration:</strong> 0:28:00.760134</p>
+<p class='attribute'><strong>Status:</strong> Pass 9 Error 22</p>
+
+<p class='description'>用例测试情况</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0001.LoginTest</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0001.py", line 35, in setUp
+    self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)  # 把上述参数传给appium services
+  File "C:\Python35\lib\site-packages\appium\webdriver\webdriver.py", line 36, in __init__
+    super(WebDriver, self).__init__(command_executor, desired_capabilities, browser_profile, proxy, keep_alive)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 151, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 240, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Error getting device platform version. Original error: Error executing adbExec. Original error: 'Command 'D\:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\platform-tools\\adb.exe -P 5037 -s e756481 shell getprop ro.build.version.release' exited with code 1'; Stderr: 'error: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.'; Code: '1'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        error</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0001.py", line 35, in setUp
+    self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)  # 把上述参数传给appium services
+  File "C:\Python35\lib\site-packages\appium\webdriver\webdriver.py", line 36, in __init__
+    super(WebDriver, self).__init__(command_executor, desired_capabilities, browser_profile, proxy, keep_alive)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 151, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 240, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Unable to find an active device or emulator with OS 7.1.2. The following are available: e756481 (6.0.1)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0002.Look_Card</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_task_swipe</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        error</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0002.py", line 35, in setUp
+    self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)  # 把上述参数传给appium services
+  File "C:\Python35\lib\site-packages\appium\webdriver\webdriver.py", line 36, in __init__
+    super(WebDriver, self).__init__(command_executor, desired_capabilities, browser_profile, proxy, keep_alive)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 151, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 240, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Error getting device platform version. Original error: Error executing adbExec. Original error: 'Command 'D\:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\platform-tools\\adb.exe -P 5037 -s e756481 shell getprop ro.build.version.release' exited with code 1'; Stderr: 'error: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.'; Code: '1'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0003.Complete_Home_Task</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_task_complete</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: Can't find the card,'str' object has no attribute 'text'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0004.Delay_Home_Task</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_task_delay</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: Can't find the card,'str' object has no attribute 'text'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0005.Request_Message</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_click_message</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: Cant find xinlingshou's message,list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0006.Long_Stick</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_stick_chat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: Cant find xinlingshou's message,list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0007.Long_Unstick</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unstick_chat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: Cant find xinlingshou's message,list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0008.Long_Delete</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_chat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: Cant find xinlingshou's message,list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0009.Send_message</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_send_message</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        pass</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: Cant find xinlingshou's message,list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0010.Get_Appnames</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_application_names</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 获取工作页面所有应用的名称失败,具体信息:list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuites.FNW_SJLC0011.Search_Appnames</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',1)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_name</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.1')" >
+        pass</a>
+
+    <div id='div_pt11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.1: 精确搜索应用请假失败，具体信息如下：list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0012.Delete_Application</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c12',1)">Detail</a></td>
+</tr>
+
+<tr id='ft12.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft12.1')" >
+        error</a>
+
+    <div id='div_ft12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft12.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0012.py", line 52, in test_login
+    delete_application.click_work_btn(i=1)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\work.py", line 20, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0013.Add_Application</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c13',2)">Detail</a></td>
+</tr>
+
+<tr id='ft13.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.1')" >
+        error</a>
+
+    <div id='div_ft13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft13.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0013.py", line 51, in test_login
+    add_application.click_work_btn(i=1)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\work.py", line 20, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 123, in find_elements
+    elements = self.driver.find_elements_by_id(selector_value)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 353, in find_elements_by_id
+    return self.find_elements(by=By.ID, value=id_)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 871, in find_elements
+    'value': value})['value'] or []
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python35\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+  File "C:\Python35\lib\site-packages\appium\webdriver\errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Android bootstrap socket crashed: Error: This socket has been ended by the other party
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft13.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.2')" >
+        error</a>
+
+    <div id='div_ft13.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft13.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft13.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0013.py", line 43, in tearDown
+    self.driver.quit()
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 603, in quit
+    self.execute(Command.QUIT)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python35\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+  File "C:\Python35\lib\site-packages\appium\webdriver\errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "C:\Python35\lib\site-packages\selenium-3.6.0-py3.5.egg\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: A session is either terminated or not started
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0014.Create_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c14',1)">Detail</a></td>
+</tr>
+
+<tr id='ft14.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_create_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft14.1')" >
+        error</a>
+
+    <div id='div_ft14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft14.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0014.py", line 52, in test_create_task
+    create_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0015.Get_Tasks</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c15',1)">Detail</a></td>
+</tr>
+
+<tr id='ft15.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_get_tasks</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft15.1')" >
+        error</a>
+
+    <div id='div_ft15.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft15.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft15.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0015.py", line 52, in test_get_tasks
+    get_tasks.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0016.Create_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c16',1)">Detail</a></td>
+</tr>
+
+<tr id='ft16.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_create_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft16.1')" >
+        error</a>
+
+    <div id='div_ft16.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft16.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft16.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0016.py", line 53, in test_create_group
+    create_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0017.Look_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c17',1)">Detail</a></td>
+</tr>
+
+<tr id='ft17.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft17.1')" >
+        error</a>
+
+    <div id='div_ft17.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft17.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft17.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0017.py", line 52, in test_look_group
+    look_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0018.Search_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c18',1)">Detail</a></td>
+</tr>
+
+<tr id='ft18.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_search_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft18.1')" >
+        error</a>
+
+    <div id='div_ft18.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft18.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft18.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0018.py", line 51, in test_search_group
+    search_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0019.Look_Group_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c19',1)">Detail</a></td>
+</tr>
+
+<tr id='ft19.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_group_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft19.1')" >
+        error</a>
+
+    <div id='div_ft19.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft19.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft19.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0019.py", line 55, in test_look_group_task
+    look_group_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0020.Search_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c20',1)">Detail</a></td>
+</tr>
+
+<tr id='ft20.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_search_group_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft20.1')" >
+        error</a>
+
+    <div id='div_ft20.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft20.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft20.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0020.py", line 56, in test_search_group_task
+    search_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0021.Dissolve_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c21',1)">Detail</a></td>
+</tr>
+
+<tr id='ft21.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_dissolve_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft21.1')" >
+        error</a>
+
+    <div id='div_ft21.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft21.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft21.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0021.py", line 56, in test_dissolve_group
+    dissolve_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0022.End_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c22',1)">Detail</a></td>
+</tr>
+
+<tr id='ft22.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_end_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft22.1')" >
+        error</a>
+
+    <div id='div_ft22.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft22.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft22.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0022.py", line 56, in test_end_task
+    end_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0024.Complete_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c23',1)">Detail</a></td>
+</tr>
+
+<tr id='ft23.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_complete_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft23.1')" >
+        error</a>
+
+    <div id='div_ft23.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft23.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft23.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0024.py", line 56, in test_complete_task
+    complete_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0025.Stick_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c24',1)">Detail</a></td>
+</tr>
+
+<tr id='ft24.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_stick_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft24.1')" >
+        error</a>
+
+    <div id='div_ft24.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft24.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft24.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0025.py", line 56, in test_stick_task
+    stick_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0026.Look_Task</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c25',1)">Detail</a></td>
+</tr>
+
+<tr id='ft25.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_task</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft25.1')" >
+        error</a>
+
+    <div id='div_ft25.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft25.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft25.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0026.py", line 56, in test_look_task
+    look_task.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0027.Look_Delay_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c26',1)">Detail</a></td>
+</tr>
+
+<tr id='ft26.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_delay_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft26.1')" >
+        error</a>
+
+    <div id='div_ft26.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft26.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft26.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0027.py", line 56, in test_look_delay_group
+    look_delay_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0028.Look_Complete_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c27',1)">Detail</a></td>
+</tr>
+
+<tr id='ft27.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_delay_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft27.1')" >
+        error</a>
+
+    <div id='div_ft27.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft27.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft27.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0028.py", line 56, in test_look_delay_group
+    look_complete_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0029.Look_End_Group</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c28',1)">Detail</a></td>
+</tr>
+
+<tr id='ft28.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_look_end_group</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft28.1')" >
+        error</a>
+
+    <div id='div_ft28.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft28.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft28.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0029.py", line 56, in test_look_end_group
+    look_end_group.click_work_btn()
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\task.py", line 50, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuites.FNW_SJLC0030.Logout</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c29',1)">Detail</a></td>
+</tr>
+
+<tr id='ft29.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_logout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft29.1')" >
+        error</a>
+
+    <div id='div_ft29.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft29.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft29.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\testsuites\FNW_SJLC0030.py", line 56, in test_logout
+    logout.click_work_btn(i=-1)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\pageobject\my.py", line 13, in click_work_btn
+    self.clicks(self.work_btn,i)
+  File "C:\Users\Administrator\PycharmProjects\uitomator_fangniuwa\framework\base_page.py", line 181, in clicks
+    el = self.find_elements(selector)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>31</td>
+    <td>9</td>
+    <td>0</td>
+    <td>22</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
